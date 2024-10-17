@@ -66,7 +66,10 @@ const Products = () => {
                     {/* Card section */}
                     {
                         ProductsData.map((data) =>( 
-                        <div key={data.id} className='space-y-3'>
+                        <div 
+                        data-aos="fade-up"
+                        data-aos-delay={data.aosDelay}
+                        key={data.id} className='space-y-3'>
                             <img src={data.img} alt='' className='h-[220px] w-[150px] object-cover rounded-md'/>
                             <div>
                                 <h3 className='font-semibold'>{data.title}</h3>
