@@ -9,8 +9,12 @@ import Banner from './components/Banner/Banner'
 import Subcrible from './components/Subcrible/Subcrible'
 import Testimonial from './components/Testimonials/Testimonial'
 import Footer from './components/Footer/Footer'
+import Popup from './components/Popup/Popup'
 
 const App = () => {
+  const [orderPopup, setOrderPopup] = React.useState(false);
+  const handleOrderPopup =() => { setOrderPopup(!orderPopup)
+  };
 
   React.useEffect(()=> {
     AOS.init({
@@ -22,15 +26,16 @@ const App = () => {
     AOS.refresh();
   },[]);
   return (
-    <div className='bg-white dark:bg-gray-900  dark:text-white  duration-200'>
-      <Navbar/>
-      <Hero/>
+    <div className='bg-white dark:bg-gray-900 dark:text-white  duration-200'>
+      <Navbar handleOrderPopup={handleOrderPopup}/>
+      <Hero handleOrderPopup={handleOrderPopup}/>
       <Products/>
-      <TopProducts/>
+      <TopProducts handleOrderPopup={handleOrderPopup}/>
       <Banner/>
       <Subcrible/>
       <Testimonial/>
       <Footer/>
+      <Popup orderPopup = {orderPopup} setOrderPopup={setOrderPopup}/>
     </div>
   )
 
